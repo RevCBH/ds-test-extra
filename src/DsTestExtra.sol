@@ -55,4 +55,13 @@ contract DSTestExtra is DSTest {
             assertFalse(condition);
         }
     }
+
+    function mockAndExpectCall(
+        address _to,
+        bytes memory _args,
+        bytes memory _returns
+    ) internal {
+        vm.mockCall(_to, _args, _returns);
+        vm.expectCall(_to, _args);
+    }
 }
